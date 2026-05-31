@@ -1,0 +1,13 @@
+title = "Gitleaks rules"
+
+[[rules]]
+id = "lab-fake-secret"
+description = "Detecta secreto falso usado para prueba del laboratorio"
+regex = '''LAB_SECRET_[A-Z0-9]{20,}'''
+secretGroup = 0
+
+[[rules]]
+id = "lab-fake-token"
+description = "Detecta token falso usado para prueba del laboratorio"
+regex = '''FAKE_TOKEN_[A-Za-z0-9_]{20,}'''
+secretGroup = 0
