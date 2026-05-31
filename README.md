@@ -244,3 +244,81 @@ OWASP Juice Shop and any contributions are Copyright © by Bjoern Kimminich & th
 2014-2026.
 
 ![Juice Shop Logo](https://raw.githubusercontent.com/juice-shop/juice-shop/master/frontend/src/assets/public/images/JuiceShop_Logo_400px.png)
+
+
+
+## ## Cómo levantar la aplicación localmente
+
+La aplicación utilizada para este laboratorio es **OWASP Juice Shop**, una aplicación web vulnerable que se ejecuta localmente mediante Docker.
+
+### Requisitos previos
+
+Antes de levantar la aplicación, se debe contar con:
+
+* Docker instalado.
+* Docker Compose instalado.
+* Git instalado.
+* Acceso a una terminal Linux o Ubuntu.
+
+Para validar las herramientas instaladas se pueden usar los siguientes comandos:
+
+```bash
+git --version
+docker --version
+docker compose version
+```
+
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/Angeliito/juice-shop-devsecops.git
+cd juice-shop-devsecops
+```
+
+### Archivo `docker-compose.yml`
+
+El proyecto incluye un archivo `docker-compose.yml` para levantar OWASP Juice Shop de forma local.
+
+Contenido del archivo:
+
+```yaml
+services:
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+```
+
+### Levantar la aplicación
+
+con docker compose up -d
+
+### Acceder a la aplicación
+
+Abrir el navegador y entrar a:
+
+http://localhost:3000
+
+
+Si se accede desde otra máquina dentro de la red, se debe usar la IP del equipo donde está corriendo Docker:
+
+```text
+http://IP_DEL_SERVIDOR:3000
+```
+
+### Ver logs de la aplicación
+
+Para revisar los últimos logs del contenedor:
+
+```bash
+docker logs juice-shop --tail=50
+```
+
+Para ver los logs en tiempo real:
+
+```bash
+docker logs -f juice-shop
+```
+
