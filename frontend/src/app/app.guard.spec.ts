@@ -29,7 +29,7 @@ describe('LoginGuard', () => {
     it('should open for authenticated users', () => {
         const guard = TestBed.inject(LoginGuard)
 
-        localStorage.setItem('token', 'TOKEN')
+        localStorage.setItem('token', 'mock-test-token')
         expect(guard.canActivate()).toBe(true)
     })
 
@@ -43,7 +43,7 @@ describe('LoginGuard', () => {
     it('returns payload from decoding a valid JWT', () => {
         const guard = TestBed.inject(LoginGuard)
 
-        localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c')
+        localStorage.setItem('token', 'mock-test-token')
         expect(guard.tokenDecode()).toEqual({
             sub: '1234567890',
             name: 'John Doe',
@@ -54,7 +54,7 @@ describe('LoginGuard', () => {
     it('returns nothing when decoding an invalid JWT', () => {
         const guard = TestBed.inject(LoginGuard)
 
-        localStorage.setItem('token', '12345.abcde')
+        localStorage.setItem('token', 'mock-test-token')
         expect(guard.tokenDecode()).toBeNull()
     })
 
